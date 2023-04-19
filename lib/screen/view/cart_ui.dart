@@ -72,14 +72,14 @@ class _Cart_UIState extends State<Cart_UI> {
                                   Row(
                                     children: [
                                       IconButton(onPressed: (){
-                                        providerF!.decrease();
+                                        providerF!.decrease(index);
                                         providerF!.cartlist[index].qty = providerF!.noitem;
 
                                       }, icon: Icon(Icons.remove_circle_outline_rounded)),
                                       Container(height: 30,width: 30,alignment: Alignment.center,
                                           child: Text("${providerF!.cartlist[index].qty}",style: TextStyle(fontSize: 25,color: Colors.pinkAccent),)),
                                       IconButton(onPressed: (){
-                                        providerF!.increase();
+                                        providerF!.increase(index);
                                         providerF!.cartlist[index].qty = providerF!.noitem;
 
                                       }, icon: Icon(Icons.add_circle_outline_rounded)),

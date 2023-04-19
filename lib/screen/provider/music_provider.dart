@@ -24,13 +24,13 @@ class MusicProvider extends ChangeNotifier
 
     int noitem = 1;
 
-    void increase()
+    void increase(int index)
     {
         noitem++;
         notifyListeners();
 
     }
-    void decrease()
+    void decrease(int index)
     {
         if(noitem>1)
         {
