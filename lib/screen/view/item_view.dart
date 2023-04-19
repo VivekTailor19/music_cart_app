@@ -43,30 +43,33 @@ class _Item_ViewState extends State<Item_View> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterFloat,
         body: Center(
-          child: Column(
-            children: [
-              SizedBox(height: 25,),
-              Container(height: 200,width: 300,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [BoxShadow(color: Colors.amber,blurRadius: 3)],
-                  image: DecorationImage(image: AssetImage("${providerF!.itemlist[index].photo}")),
-              ),
-              ),
-              SizedBox(height: 20,),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text("${providerT!.itemlist[index].name}",style: TextStyle(fontSize: 30),),
-                  Text("${providerT!.itemlist[index].price}",style: TextStyle(fontSize: 30),),
-                ],
-              ),
-              SizedBox(height: 10,),
-              Text("${providerT!.itemlist[index].detail}"),
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              children: [
+                SizedBox(height: 25,),
+                Container(height: 200,width: 300,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
 
-              SizedBox(height: 20),
+                    image: DecorationImage(image: AssetImage("${providerF!.itemlist[index].photo}")),
+                ),
+                ),
+                SizedBox(height: 20,),
+                Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text("${providerT!.itemlist[index].name}",style: TextStyle(fontSize: 30),),
+                    Text("₹ ${providerT!.itemlist[index].price}",style: TextStyle(fontSize: 30),),
+                  ],
+                ),
+                SizedBox(height: 10,),
+                Text("${providerT!.itemlist[index].detail}",textAlign: TextAlign.justify,style: TextStyle(fontSize: 15),),
+
+                SizedBox(height: 20),
 
 
-            ],
+              ],
+            ),
           ),
         ),
       ),
