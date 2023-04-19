@@ -32,58 +32,64 @@ class _Cart_UIState extends State<Cart_UI> {
                 child: ListView.builder(
                   itemCount: providerF!.cartlist.length,
                   itemBuilder: (context, index) {
-                    return Container(
-
-                      height: 60,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5.0,horizontal: 10),
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
+                      child: Container(height: 100,
+                        decoration: BoxDecoration(color: Colors.teal,
+                            borderRadius: BorderRadius.circular(20)),
                         child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text("${index + 1}",style: TextStyle(fontSize: 18),),
-                            SizedBox(width: 10,),
-                            Container(
-                              height: 60, width: 60, decoration: BoxDecoration(
-                                image: DecorationImage(image: AssetImage(
-                                    "${providerT!.cartlist[index].photo}"),fit: BoxFit.fill)),),
-
-                            SizedBox(width: 10),
-
-                            Text("${providerT!.cartlist[index].name}",),
-                            Spacer(),
-
-                            Row(
-                              children: [
-                                IconButton(onPressed: () {
-                                  providerF!.decrease();
-                                  providerF!.cartlist[index].qty = providerF!.noitem;
-
-                                }, icon: Icon(Icons.remove,size: 20,color: Colors.red,)),
-                                Container(height: 30,width: 30,alignment: Alignment.center,
-                                child: Text("${ providerF!.cartlist[index].qty}",style: TextStyle(fontSize: 25,color: Colors.pinkAccent),)),
-                                IconButton(onPressed: () {
-
-                                  providerF!.increase();
-                                  providerF!.cartlist[index].qty = providerF!.noitem;
-
-                                }, icon: Icon(Icons.add,size: 20,color: Colors.green,)),
-                              ],
+                            Container(height: 100,width: 100,
+                                decoration: BoxDecoration(color: Colors.tealAccent,
+                                    borderRadius: BorderRadius.circular(20),
+                                    image: DecorationImage(image: AssetImage(
+                                        "${providerT!.cartlist[index].photo}"),fit: BoxFit.fill))
                             ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              child: Container(
 
+                                child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Text("${providerT!.cartlist[index].name}",),
+                                    Text("${providerT!.cartlist[index].price}",),
 
+                                  ],
+                                ),
 
+                              ),
+                            ),
+                            Spacer(),
+                            Container(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  IconButton(onPressed: (){
 
-                            IconButton(onPressed: () {
+                                    providerF!.delete(index);
 
-                              providerF!.delete(index);
+                                  }, icon: Icon(Icons.close_rounded,size: 12)),
+                                  Row(
+                                    children: [
+                                      IconButton(onPressed: (){
+                                        providerF!.decrease();
+                                        providerF!.cartlist[index].qty = providerF!.noitem;
 
-                            }, icon: Icon(Icons.delete_forever_rounded,size: 20,color: Colors.red,)),
+                                      }, icon: Icon(Icons.remove_circle_outline_rounded)),
+                                      Container(height: 30,width: 30,alignment: Alignment.center,
+                                          child: Text("${providerF!.cartlist[index].qty}",style: TextStyle(fontSize: 25,color: Colors.pinkAccent),)),
+                                      IconButton(onPressed: (){
+                                        providerF!.increase();
+                                        providerF!.cartlist[index].qty = providerF!.noitem;
 
+                                      }, icon: Icon(Icons.add_circle_outline_rounded)),
+                                    ],
 
+                                  )
 
-
-
-
+                                ],
+                              ),
+                            )
 
                           ],
                         ),
@@ -93,6 +99,7 @@ class _Cart_UIState extends State<Cart_UI> {
 
                 ),
               ),
+
 
             ],),
 

@@ -41,35 +41,48 @@ class _Item_ViewState extends State<Item_View> {
         },
             label: Text("Add to Cart"),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterFloat,
+        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
         body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              children: [
-                SizedBox(height: 25,),
-                Container(height: 200,width: 300,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
+          child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Stack(
+                children: [
+                  Image.asset("${providerF!.itemlist[index].photo}",height: 350,),
+                  // Container(height: 200,width: 300,
+                  //   decoration: BoxDecoration(color: Colors.,
+                  //     borderRadius: BorderRadius.circular(20),
+                  //
+                  //     image: DecorationImage(image: AssetImage("${providerF!.itemlist[index].photo}")),
+                  //   ),
+                  // ),
+                ],
+              ),
 
-                    image: DecorationImage(image: AssetImage("${providerF!.itemlist[index].photo}")),
+              Container(height: 250,
+                decoration: BoxDecoration(color: Colors.amber,
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(35),topRight: Radius.circular(35))),
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 10),
+                      Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text("${providerT!.itemlist[index].name}",style: TextStyle(fontSize: 30),),
+                          Text("₹ ${providerT!.itemlist[index].price}",style: TextStyle(fontSize: 30),),
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+                      Text("${providerT!.itemlist[index].detail}",textAlign: TextAlign.justify,style: TextStyle(fontSize: 15),),
+
+                    ],
+                  ),
                 ),
-                ),
-                SizedBox(height: 20,),
-                Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text("${providerT!.itemlist[index].name}",style: TextStyle(fontSize: 30),),
-                    Text("₹ ${providerT!.itemlist[index].price}",style: TextStyle(fontSize: 30),),
-                  ],
-                ),
-                SizedBox(height: 10,),
-                Text("${providerT!.itemlist[index].detail}",textAlign: TextAlign.justify,style: TextStyle(fontSize: 15),),
-
-                SizedBox(height: 20),
+              ),
 
 
-              ],
-            ),
+
+            ],
           ),
         ),
       ),
