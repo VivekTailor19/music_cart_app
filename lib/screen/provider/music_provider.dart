@@ -20,15 +20,23 @@ class MusicProvider extends ChangeNotifier
 
     ];
 
-    List<Music> cartlist = [];
+    List<Music> cartlist = [Music(photo: "assets/images/tumbi.png",name: "Tumbi",detail: "SAI Musical Pure Handmade Tumbi",price: 650,qty: 1),];
 
     int noitem = 1;
+    int qua = 1;
 
     void increase(int index)
     {
-        noitem++;
+        for(int i=0; i<cartlist.length ;i++)
+            {
+                if( i == index )
+                    {
+                        noitem++;
+                        qua = noitem;
+                    }
+            }
+        noitem = 1 ;
         notifyListeners();
-
     }
     void decrease(int index)
     {

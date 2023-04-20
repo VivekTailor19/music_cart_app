@@ -34,12 +34,12 @@ class _Cart_UIState extends State<Cart_UI> {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
-                      child: Container(height: 100,
+                      child: Container(height: 110,
                         decoration: BoxDecoration(color: Colors.teal,
                             borderRadius: BorderRadius.circular(20)),
                         child: Row(
                           children: [
-                            Container(height: 100,width: 100,
+                            Container(height: 110,width: 110,
                                 decoration: BoxDecoration(color: Colors.tealAccent,
                                     borderRadius: BorderRadius.circular(20),
                                     image: DecorationImage(image: AssetImage(
@@ -72,15 +72,20 @@ class _Cart_UIState extends State<Cart_UI> {
                                   Row(
                                     children: [
                                       IconButton(onPressed: (){
-                                        providerF!.decrease(index);
-                                        providerF!.cartlist[index].qty = providerF!.noitem;
+                                        //providerF!.decrease(index);
+                                        print("${providerF!.cartlist[index].qty}");
+                                        providerF!.cartlist[index].qty;
+                                        //= providerF!.noitem;
 
                                       }, icon: Icon(Icons.remove_circle_outline_rounded)),
                                       Container(height: 30,width: 30,alignment: Alignment.center,
                                           child: Text("${providerF!.cartlist[index].qty}",style: TextStyle(fontSize: 25,color: Colors.pinkAccent),)),
                                       IconButton(onPressed: (){
+
+
+
                                         providerF!.increase(index);
-                                        providerF!.cartlist[index].qty = providerF!.noitem;
+                                        providerF!.cartlist[index].qty = providerF!.qua;
 
                                       }, icon: Icon(Icons.add_circle_outline_rounded)),
                                     ],
