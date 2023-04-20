@@ -66,20 +66,20 @@ class _Cart_UIState extends State<Cart_UI> {
                                 children: [
                                   IconButton(onPressed: (){
 
-                                    providerT!.delete(index);
+                                    providerF!.delete(index);
 
                                   }, icon: Icon(Icons.close_rounded,size: 12)),
                                   Row(
                                     children: [
                                       IconButton(onPressed: (){
-                                        providerT!.decrease(index);
+                                        providerF!.decrease(index);
                                       }, icon: Icon(Icons.remove_circle_outline_rounded)),
 
                                       Container(height: 30,width: 30,alignment: Alignment.center,
                                           child: Text("${providerT!.cartlist[index].qty}",style: TextStyle(fontSize: 25,color: Colors.pinkAccent),)),
 
                                       IconButton(onPressed: (){
-                                        providerT!.increase(index);
+                                        providerF!.increase(index);
                                       }, icon: Icon(Icons.add_circle_outline_rounded)),
                                     ],
 
@@ -87,7 +87,7 @@ class _Cart_UIState extends State<Cart_UI> {
 
                                 ],
                               ),
-                            )
+                            ),
 
                           ],
                         ),
@@ -97,6 +97,15 @@ class _Cart_UIState extends State<Cart_UI> {
 
                 ),
               ),
+
+              SizedBox(height: 50,),
+              ElevatedButton(onPressed: (){
+                providerF!.finalbill();
+              }, child: Text("Create Bill")),
+
+              Text("Total ${providerT!.total}",style: TextStyle(fontSize: 30,color: Colors.pink),),
+              Text("Delivery ${providerT!.delivery}",style: TextStyle(fontSize: 30,color: Colors.pink),),
+              Text("Final Price ${providerT!.finalprice}",style: TextStyle(fontSize: 30,color: Colors.pink),)
 
 
             ],),

@@ -22,7 +22,10 @@ class MusicProvider extends ChangeNotifier
 
     List<Music> cartlist = [Music(photo: "assets/images/tumbi.png",name: "Tumbi",detail: "SAI Musical Pure Handmade Tumbi",price: 650,qty: 1),];
 
-    int noitem = 1;
+    int total = 0;
+    int finalprice = 0;
+    int delivery = 100;
+
 
 
     void increase(int index)
@@ -30,6 +33,7 @@ class MusicProvider extends ChangeNotifier
         Music temp = cartlist[index];
         Music update = Music(name: temp.name,price: temp.price,qty:temp.qty!+1,photo: temp.photo,detail: temp.detail);
         cartlist[index] = update;
+        finalbill();
         notifyListeners();
     }
     void decrease(int index)
@@ -44,12 +48,26 @@ class MusicProvider extends ChangeNotifier
             Music update = Music(name: temp.name,price: temp.price,qty:temp.qty!-1,photo: temp.photo,detail: temp.detail);
             cartlist[index] = update;
         }
+        finalbill();
         notifyListeners();
 
     }
     void delete(int index)
     {
         cartlist.removeAt(index);
+        finalbill();
+        notifyListeners();
+    }
+
+    void finalbill()
+    {
+        total = 0;
+        for(int i = 0; i<cartlist.length ; i++)
+        {
+            total = total +  cartlist[i].price! * cartlist[i].qty! ;
+            print(total);
+        }
+        finalprice = total + delivery;
         notifyListeners();
     }
 
