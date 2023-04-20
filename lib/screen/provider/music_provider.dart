@@ -46,7 +46,6 @@ class MusicProvider extends ChangeNotifier
         }
         notifyListeners();
 
-
     }
     void delete(int index)
     {
