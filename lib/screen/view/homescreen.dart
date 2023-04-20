@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
 
@@ -61,6 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Color(0x10131313)),
                 child: Column(mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    SizedBox(height: 8),
                     Container(height: 110,width: 130,
                     decoration: BoxDecoration(image: DecorationImage(image: AssetImage("${provider!.itemlist[index].photo}"),fit: BoxFit.fill)),
                     ),

@@ -24,30 +24,33 @@ class _Item_ViewState extends State<Item_View> {
     int index = ModalRoute.of(context)!.settings.arguments as int;
 
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(title: Text("Music Item"),
-        centerTitle: true,
-        ),
-        floatingActionButton: FloatingActionButton.extended(onPressed: () {
+      child: Scaffold(backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
 
-          providerF!.cartlist.add(providerF!.itemlist[index]);
-          Navigator.pop(context);
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              backgroundColor: Colors.green.shade50,
-              behavior: SnackBarBehavior.floating,
-              content: Text("${providerT!.itemlist[index].name} is added to Cart",style: TextStyle(fontSize: 15,color: Colors.blueGrey.shade900),)),
-          );
-
-        },
-            label: Text("Add to Cart"),
+          leading: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: IconButton(
+              icon: Icon(Icons.arrow_back_ios,size: 30,color: Color(0xff666666)),
+              iconSize: 25, color: Colors.indigo,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ),
+          actions: [Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Icon(Icons.favorite_rounded,size: 30,color: Color(0xff666666)),
+          )],
+          elevation: 0,
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+
         body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Stack(
                 children: [
-                  Image.asset("${providerF!.itemlist[index].photo}",height: 350,),
+                  Image.asset("${providerF!.itemlist[index].photo}",height: 400,width: 360,fit: BoxFit.fill,),
                   // Container(height: 200,width: 300,
                   //   decoration: BoxDecoration(color: Colors.,
                   //     borderRadius: BorderRadius.circular(20),
@@ -58,22 +61,42 @@ class _Item_ViewState extends State<Item_View> {
                 ],
               ),
 
-              Container(height: 250,
-                decoration: BoxDecoration(color: Colors.amber,
+              Container(height: 200,
+                decoration: BoxDecoration(color: Color(0x10131313),
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(35),topRight: Radius.circular(35))),
                 child: Padding(
                   padding: const EdgeInsets.all(10),
-                  child: Column(
+                  child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      SizedBox(height: 10),
+
                       Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text("${providerT!.itemlist[index].name}",style: TextStyle(fontSize: 30),),
-                          Text("₹ ${providerT!.itemlist[index].price}",style: TextStyle(fontSize: 30),),
+                          Text("${providerT!.itemlist[index].name}",style: TextStyle(fontSize: 25),),
+
+                          Text("₹ ${providerT!.itemlist[index].price}",style: TextStyle(fontSize: 25),),
                         ],
                       ),
-                      SizedBox(height: 10,),
-                      Text("${providerT!.itemlist[index].detail}",textAlign: TextAlign.justify,style: TextStyle(fontSize: 15),),
+
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Text("${providerT!.itemlist[index].detail}",textAlign: TextAlign.justify,style: TextStyle(fontSize: 15),),
+                      ),
+
+                      FloatingActionButton.extended(
+                        backgroundColor: Color(0xff131313),
+                        onPressed: () {
+
+                        providerF!.cartlist.add(providerF!.itemlist[index]);
+                        Navigator.pop(context);
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            backgroundColor: Colors.green.shade50,
+                            behavior: SnackBarBehavior.floating,
+                            content: Text("${providerT!.itemlist[index].name} is added to Cart",style: TextStyle(fontSize: 15,color: Colors.blueGrey.shade900),)),
+                        );
+
+                      },
+                        label: Text("Add to Cart",style: TextStyle(fontSize: 15),),
+                      ),
 
                     ],
                   ),
