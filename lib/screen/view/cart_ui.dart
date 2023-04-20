@@ -19,12 +19,24 @@ class _Cart_UIState extends State<Cart_UI> {
   @override
   Widget build(BuildContext context) {
 
+   // int total = ModalRoute.of(context)!.settings.arguments as int;
+
     providerF = Provider.of<MusicProvider>(context, listen: false);
     providerT = Provider.of<MusicProvider>(context, listen: true);
 
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: Text("Shopping Area",style: TextStyle(fontSize: 25),),elevation:5,),
+        appBar: AppBar(
+          leading: InkWell(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              child: Icon(Icons.arrow_back_rounded,size: 30,color: Colors.black38,)),
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          title: Text("Shopping Area", style: TextStyle(fontSize: 25,color: Color(0xff131313)),),
+          elevation:0,
+        ),
         body: Center(
           child: Column(
             children: [
@@ -139,14 +151,6 @@ class _Cart_UIState extends State<Cart_UI> {
                 ),
 
               ),
-              // ElevatedButton(onPressed: (){
-              //   providerF!.finalbill();
-              // }, child: Text("Create Bill")),
-              //
-              // Text("Total ${providerT!.total}",style: TextStyle(fontSize: 30,color: Colors.pink),),
-              // Text("Delivery ${providerT!.delivery}",style: TextStyle(fontSize: 30,color: Colors.pink),),
-              // Text("Final Price ${providerT!.finalprice}",style: TextStyle(fontSize: 30,color: Colors.pink),)
-
 
             ],),
 
