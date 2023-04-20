@@ -23,28 +23,29 @@ class MusicProvider extends ChangeNotifier
     List<Music> cartlist = [Music(photo: "assets/images/tumbi.png",name: "Tumbi",detail: "SAI Musical Pure Handmade Tumbi",price: 650,qty: 1),];
 
     int noitem = 1;
-    int qua = 1;
+
 
     void increase(int index)
     {
-        for(int i=0; i<cartlist.length ;i++)
-            {
-                if( i == index )
-                    {
-                        noitem++;
-                        qua = noitem;
-                    }
-            }
-        noitem = 1 ;
+        Music temp = cartlist[index];
+        Music update = Music(name: temp.name,price: temp.price,qty:temp.qty!+1,photo: temp.photo,detail: temp.detail);
+        cartlist[index] = update;
         notifyListeners();
     }
     void decrease(int index)
     {
-        if(noitem>1)
+        Music temp = cartlist[index];
+        if(temp.qty == 1)
         {
-            noitem--;
-            notifyListeners();
+            delete(index);
         }
+        else
+        {
+            Music update = Music(name: temp.name,price: temp.price,qty:temp.qty!-1,photo: temp.photo,detail: temp.detail);
+            cartlist[index] = update;
+        }
+        notifyListeners();
+
 
     }
     void delete(int index)

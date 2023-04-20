@@ -28,9 +28,10 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           title: Text("Music Instrument Shopping",style: TextStyle(fontSize: 20),),
           actions: [
-            IconButton(icon: Icon(Icons.shopping_cart),iconSize: 25,color: Colors.indigo,
+            IconButton(
+              icon: Icon(Icons.shopping_cart),
+              iconSize: 25, color: Colors.indigo,
               onPressed: () {
-
                 Navigator.pushNamed(context, "cart");
 
               },

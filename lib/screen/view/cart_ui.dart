@@ -43,7 +43,7 @@ class _Cart_UIState extends State<Cart_UI> {
                                 decoration: BoxDecoration(color: Colors.tealAccent,
                                     borderRadius: BorderRadius.circular(20),
                                     image: DecorationImage(image: AssetImage(
-                                        "${providerT!.cartlist[index].photo}"),fit: BoxFit.fill))
+                                        "${providerF!.cartlist[index].photo}"),fit: BoxFit.fill))
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -51,8 +51,8 @@ class _Cart_UIState extends State<Cart_UI> {
 
                                 child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: [
-                                    Text("${providerT!.cartlist[index].name}",),
-                                    Text("${providerT!.cartlist[index].price}",),
+                                    Text("${providerF!.cartlist[index].name}",),
+                                    Text("${providerT!.cartlist[index].price! * providerT!.cartlist[index].qty!}",),
 
                                   ],
                                 ),
@@ -66,27 +66,20 @@ class _Cart_UIState extends State<Cart_UI> {
                                 children: [
                                   IconButton(onPressed: (){
 
-                                    providerF!.delete(index);
+                                    providerT!.delete(index);
 
                                   }, icon: Icon(Icons.close_rounded,size: 12)),
                                   Row(
                                     children: [
                                       IconButton(onPressed: (){
-                                        //providerF!.decrease(index);
-                                        print("${providerF!.cartlist[index].qty}");
-                                        providerF!.cartlist[index].qty;
-                                        //= providerF!.noitem;
-
+                                        providerT!.decrease(index);
                                       }, icon: Icon(Icons.remove_circle_outline_rounded)),
+
                                       Container(height: 30,width: 30,alignment: Alignment.center,
-                                          child: Text("${providerF!.cartlist[index].qty}",style: TextStyle(fontSize: 25,color: Colors.pinkAccent),)),
+                                          child: Text("${providerT!.cartlist[index].qty}",style: TextStyle(fontSize: 25,color: Colors.pinkAccent),)),
+
                                       IconButton(onPressed: (){
-
-
-
-                                        providerF!.increase(index);
-                                        providerF!.cartlist[index].qty = providerF!.qua;
-
+                                        providerT!.increase(index);
                                       }, icon: Icon(Icons.add_circle_outline_rounded)),
                                     ],
 
