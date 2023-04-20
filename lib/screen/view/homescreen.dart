@@ -21,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     provider = Provider.of<MusicProvider>(context,listen: false);
   }
 
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
