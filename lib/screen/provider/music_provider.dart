@@ -28,11 +28,25 @@ class MusicProvider extends ChangeNotifier
         Music(type:"Wind",photo: "assets/images/shenai.jpg",name: "Shenai",detail: "SAONA India Indian Classical Wind Musical Instrument Shehnai",price: 1600,qty: 1,fav: false),
         Music(type:"Wind",photo: "assets/images/trumpet.jpg",name: "Trumpet",detail: "ARB Professional Edition AGT-03 Bb Trumpet  (Yes)",price: 9500,qty: 1,fav: false),
 
-
-
     ];
 
-    List<Music> filterlist = [];
+    List<Music> filterlist = [
+        Music(type:"String",photo: "assets/images/casio.jpg",name: "Casio",detail: "YAMAHA PSR-F52 PORTABLE KEYBOARD WITH 61 KEYS",price: 7200,qty: 1,fav: false),
+        Music(type:"String",photo: "assets/images/gitar.jpg",name: "Gitar",detail: "Kadence Wanderer Series ukulele + (Free online learning Course) Brown Mahogany wood Ukulele With Bag",price: 2199,qty: 1,fav: false),
+        Music(type:"String",photo: "assets/images/harmonium.jpg",name: "Harmonium",detail: "Laying Style™ 9 Stopper 42 Key 2 Reed 440 Tuned Total Wood Musical Instrument Harmonium (Brown)",price: 7700,qty: 1,fav: false),
+        Music(type:"String",photo: "assets/images/tumbi.jpg",name: "Tumbi",detail: "SAI Musical Pure Handmade Fine Crafted Indian Musical Instruments Wooden Playing Iktara (Tumbi)",price: 650,qty: 1,fav: false),
+
+        Music(type:"Percussion",photo: "assets/images/damru.jpg",name: "Damru",detail: "De Kulture Works™ Hand Hammered Brass Damru Mini Hand Drum Musical Instruments 4X3 DH (Inches)",price: 1475,qty: 1,fav: false),
+        Music(type:"Percussion",photo: "assets/images/manjeera.jpg",name: "Manjeera",detail: "Berua Karatals for kirtan, Spiritual Music Musical Instruments Indian Manjeera",price: 350,qty: 1,fav: false),
+        Music(type:"Percussion",photo: "assets/images/tabla.jpg",name: "Tabla",detail: "HRB MUSICALS® Student Table Jodi, Basic Table Set, Steel Bayan, Dayan wooden table, Hammer, Cushions & Cover, with bag- Perfect Tablas for Students and Beginners on Budget Tabla, Indian Hand Drums",price: 6555,qty: 1,fav: false),
+        Music(type:"Percussion",photo: "assets/images/dholak.jpg",name: "Dholak",detail: "Ganesh Musical Store Presents - Handmade Dholak",price:1500,qty: 1,fav: false),
+
+        Music(type:"Wind",photo: "assets/images/mouthorgan.jpg",name: "Mouth Organ",detail: "East top Chromatic Mouth Organs Harmonica Key of Bb,12 Holes 48 Tones Chromatic Harmonica Mouth Organ Musical Instrument for Adults and Professionals(Bb)",price: 8910,qty: 1,fav: false),
+        Music(type:"Wind",photo: "assets/images/flute.png",name: "Flute",detail: "Shiv'z Muzic Flute, G Natural BASE, PREMIUM Bansuri, 25 inches (with Written Manual & Bag)",price: 2500,qty: 1,fav: false),
+        Music(type:"Wind",photo: "assets/images/shenai.jpg",name: "Shenai",detail: "SAONA India Indian Classical Wind Musical Instrument Shehnai",price: 1600,qty: 1,fav: false),
+        Music(type:"Wind",photo: "assets/images/trumpet.jpg",name: "Trumpet",detail: "ARB Professional Edition AGT-03 Bb Trumpet  (Yes)",price: 9500,qty: 1,fav: false),
+
+    ];
     List<Music> likedlist = [];
     int gridheight = 180;
 
@@ -120,6 +134,7 @@ class MusicProvider extends ChangeNotifier
     void like(int index)
     {
         Music temp = filterlist[index];
+
         if(filterlist[index].fav == true)
             {
                 filterlist[index].fav = false;

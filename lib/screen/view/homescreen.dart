@@ -17,7 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    int i = 0;
 
     providerF = Provider.of<MusicProvider>(context, listen: false);
     providerT = Provider.of<MusicProvider>(context, listen: true);
