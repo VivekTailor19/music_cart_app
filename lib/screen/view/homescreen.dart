@@ -63,8 +63,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(height: 8),
-                    Container(height: 110,width: 130,
-                    decoration: BoxDecoration(image: DecorationImage(image: AssetImage("${provider!.itemlist[index].photo}"),fit: BoxFit.fill)),
+                    Container(
+                      height: 110,width: 130,
+                      decoration: BoxDecoration(image: DecorationImage(image: AssetImage("${provider!.itemlist[index].photo}"),fit: BoxFit.fill)),
                     ),
                     SizedBox(height: 8),
                     Text("${provider!.itemlist[index].name}",style: TextStyle(fontSize: 16,),),

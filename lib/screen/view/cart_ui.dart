@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_cart_app/screen/provider/music_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Cart_UI extends StatefulWidget {
   const Cart_UI({Key? key}) : super(key: key);
@@ -18,6 +18,8 @@ class _Cart_UIState extends State<Cart_UI> {
 
   @override
   Widget build(BuildContext context) {
+
+    //Uri url = Uri.parse("www.cylog.org");
 
    // int total = ModalRoute.of(context)!.settings.arguments as int;
 
@@ -137,12 +139,29 @@ class _Cart_UIState extends State<Cart_UI> {
                           Text("₹ ${providerT!.finalprice}.00",style: TextStyle(fontSize: 20))
                         ],
                       ),
-                      Container(height: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: Color(0xff131313),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Text("Go to Payment",style: TextStyle(fontSize: 18,color: Colors.white),),
+                      InkWell(
+                        onTap: () async {
+
+                             String url = 'https://www.amazon.in/Muteyaar-Polished-Sheesham-Punjabi-Instrument/dp/B07TLBQDCT/ref=sr_1_7?crid=N0CB234F17YE&keywords=tumbi&qid=1682051418&s=musical-instruments&sprefix=tumbi%2Cmi%2C180&sr=1-7';
+                             final uri = Uri.parse(url);
+
+                              await launchUrl(uri);
+
+
+
+                          // print("hello world");
+                          //
+                          //
+                          // await launchUrl(url);
+                          //Uri toLaunch = await Uri(scheme: 'https', host: 'www.cylog.org', path: 'headers/');
+                        },
+                        child: Container(height: 50,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Color(0xff131313),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Text("Go to Payment",style: TextStyle(fontSize: 18,color: Colors.white),),
+                        ),
                       ),
 
 

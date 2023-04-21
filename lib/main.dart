@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_cart_app/screen/provider/music_provider.dart';
+import 'package:music_cart_app/screen/splashscreen/splash.dart';
 import 'package:music_cart_app/screen/view/cart_ui.dart';
 import 'package:music_cart_app/screen/view/homescreen.dart';
 import 'package:music_cart_app/screen/view/item_view.dart';
@@ -15,7 +16,8 @@ void main() {
         debugShowCheckedModeBanner: false,
 
         routes: {
-          "/":(context) => HomeScreen(),
+          "/":(context) => SplashScreen(),
+          "home":(context) => HomeScreen(),
           "itemview":(context) => Item_View(),
           "cart":(context) => Cart_UI(),
 
