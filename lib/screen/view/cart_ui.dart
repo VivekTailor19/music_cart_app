@@ -144,16 +144,8 @@ class _Cart_UIState extends State<Cart_UI> {
 
                              String url = 'https://paytm.com/';
                              final uri = Uri.parse(url);
-
                               await launchUrl(uri);
 
-
-
-                          // print("hello world");
-                          //
-                          //
-                          // await launchUrl(url);
-                          //Uri toLaunch = await Uri(scheme: 'https', host: 'www.cylog.org', path: 'headers/');
                         },
                         child: Container(height: 50,
                           alignment: Alignment.center,
