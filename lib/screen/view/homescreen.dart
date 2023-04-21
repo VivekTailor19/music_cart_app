@@ -53,6 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 5),
 
@@ -66,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             ),),
 
-            SizedBox(height: 15),
+            SizedBox(height: 10),
             Container(height: 30,
               child: Expanded(
                 child: ListView(
@@ -102,24 +103,21 @@ class _HomeScreenState extends State<HomeScreen> {
 
             SizedBox(height: 15),
 
-            providerT!.option == "All" ?
-              Expanded(
-              child: GridView.builder(
-                scrollDirection: Axis.vertical,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2
-
-                  ),
-                  itemCount: providerT!.filterlist.length,
-                  itemBuilder: (
-                      context, index) => InkWell(
-                        onTap: () => Navigator.pushNamed(context, "itemview",
-                            arguments: index),
-                        child: Container(
-                          height: 170,
-                          width: 160,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
+              Container(height: 200,
+                child: ListView.builder(
+                    scrollDirection:Axis.horizontal,
+                    itemCount: providerT!.filterlist.length,
+                    itemBuilder: (
+                        context, index) => Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),
+                        child: InkWell(
+                          onTap: () => Navigator.pushNamed(context, "itemview",
+                              arguments: index),
+                          child: Container(
+                            height: 170,
+                            width: 160,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
                               // color: Color(0x10131313),
                               color: Colors.white),
                           child: Column(
@@ -130,12 +128,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
-                                child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(15),
-                                    child: Image.asset(
-                                      "${providerF!.filterlist[index].photo}",
-                                      fit: BoxFit.cover,
-                                    )),
+                                child: Image.asset(
+                                  "${providerF!.filterlist[index].photo}",
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                               SizedBox(height: 5),
                               Text(
@@ -152,18 +148,33 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                         ),
-                      )),
-            ) :
-              Expanded(
+                      ),
+                    )),
+              ),
+
+
+
+            Divider(color: Colors.black12,thickness: 0.65,),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Container(
+                height: 20,
+                width: 85,
+                alignment: Alignment.centerLeft,
+
+                child: Text("Favorites",style: TextStyle(fontSize: 15),),
+              ),
+            ),
+            Container(height: 170,
               child: ListView.builder(
                   scrollDirection:Axis.horizontal,
-                  itemCount: providerT!.filterlist.length,
+                  itemCount: providerT!.likedlist.length,
                   itemBuilder: (
                       context, index) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),
-                    child: InkWell(
-                      onTap: () => Navigator.pushNamed(context, "itemview",
-                          arguments: index),
+                      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),
+                      child: InkWell(
+                        onTap: () => Navigator.pushNamed(context, "itemview",
+                            arguments: index),
                       child: Container(
                         height: 170,
                         width: 160,
@@ -174,27 +185,25 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           children: [
                             Container(
-                              height: 120,
+                              height: 100,
                               width: 160,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(15),
-                                  child: Image.asset(
-                                    "${providerF!.filterlist[index].photo}",
-                                    fit: BoxFit.cover,
-                                  )),
+                              child: Image.asset(
+                                "${providerF!.likedlist[index].photo}",
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                            SizedBox(height: 5),
+                            SizedBox(height: 3),
                             Text(
-                              "${providerF!.filterlist[index].name}",
+                              "${providerF!.likedlist[index].name}",
                               style: TextStyle(
                                 fontSize: 16,
                               ),
                             ),
                             Text(
-                              "₹ ${providerF!.filterlist[index].price}",
+                              "₹ ${providerF!.likedlist[index].price}",
                               style: TextStyle(
                                   fontSize: 15, color: Color(0xff666666)),
                             ),
@@ -204,6 +213,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   )),
             ),
+
+
 
           ],
         ),

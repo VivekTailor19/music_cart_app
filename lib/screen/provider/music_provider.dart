@@ -56,6 +56,7 @@ class MusicProvider extends ChangeNotifier
 
             filterlist = itemlist;
             gridheight*= filterlist.length;
+
         }
 
         notifyListeners();
@@ -118,7 +119,7 @@ class MusicProvider extends ChangeNotifier
 
     void like(int index)
     {
-        Music temp = cartlist[index];
+        Music temp = filterlist[index];
         if(filterlist[index].fav == true)
             {
                 filterlist[index].fav = false;
