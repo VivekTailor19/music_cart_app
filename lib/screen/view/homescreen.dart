@@ -11,16 +11,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  MusicProvider? provider;
 
-  @override
-  void initState() {
-    super.initState();
-    provider = Provider.of<MusicProvider>(context, listen: false);
-  }
+  MusicProvider? providerF;
+  MusicProvider? providerT;
 
   @override
   Widget build(BuildContext context) {
+
+    providerF = Provider.of<MusicProvider>(context, listen: false);
+    providerT = Provider.of<MusicProvider>(context, listen: true);
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -39,11 +39,11 @@ class _HomeScreenState extends State<HomeScreen> {
           elevation: 0,
           actions: [
             IconButton(
-              icon: Icon(Icons.shopping_cart),
+              icon: Icon(Icons.shopping_bag),
               iconSize: 25,
               color: Color(0xff666666),
               onPressed: () {
-                provider!.finalbill();
+                providerT!.finalbill();
                 Navigator.pushNamed(context, "cart");
                 //,arguments: provider!.total);
               },
@@ -53,33 +53,52 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Column(
           children: [
             SizedBox(height: 5),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 9,vertical: 5),
-              child: Container(height: 35,
-                child: Expanded(
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      Tabs("All"),
-                      Tabs("Percussion"),
-                      Tabs("String"),
-                      Tabs("Wind"),
+            Container(height: 30,
+              child: Expanded(
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    InkWell(onTap: () {
+                      providerT!.filter("All");
+                    },
+                    child: Tabs("All")),
 
-                    ],
-                  ),
+
+                    InkWell(onTap: () {
+                      providerT!.filter("Percussion");
+                     },
+                      child: Tabs("Percussion")),
+
+                    InkWell(
+                        onTap: () {
+                          providerT!.filter("String");
+                        },
+                        child: Tabs("String")),
+
+                    InkWell(
+                        onTap: () {
+                          providerT!.filter("Wind");
+                        },
+                        child: Tabs("Wind")),
+
+                  ],
                 ),
               ),
             ),
+
+            SizedBox(height: 15),
+
+            providerT!.option == "All" ?
               Expanded(
               child: GridView.builder(
-                  scrollDirection: Axis.vertical,
+                scrollDirection: Axis.vertical,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 15,
-                    mainAxisSpacing: 10,
+                    crossAxisCount: 2
+
                   ),
-                  itemCount: provider!.itemlist.length,
-                  itemBuilder: (context, index) => InkWell(
+                  itemCount: providerT!.filterlist.length,
+                  itemBuilder: (
+                      context, index) => InkWell(
                         onTap: () => Navigator.pushNamed(context, "itemview",
                             arguments: index),
                         child: Container(
@@ -100,19 +119,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: ClipRRect(
                                     borderRadius: BorderRadius.circular(15),
                                     child: Image.asset(
-                                      "${provider!.itemlist[index].photo}",
+                                      "${providerF!.filterlist[index].photo}",
                                       fit: BoxFit.cover,
                                     )),
                               ),
                               SizedBox(height: 5),
                               Text(
-                                "${provider!.itemlist[index].name}",
+                                "${providerF!.filterlist[index].name}",
                                 style: TextStyle(
                                   fontSize: 16,
                                 ),
                               ),
                               Text(
-                                "₹ ${provider!.itemlist[index].price}",
+                                "₹ ${providerF!.filterlist[index].price}",
                                 style: TextStyle(
                                     fontSize: 15, color: Color(0xff666666)),
                               ),
@@ -120,7 +139,58 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       )),
+            ) :
+              Expanded(
+              child: ListView.builder(
+                  scrollDirection:Axis.horizontal,
+                  itemCount: providerT!.filterlist.length,
+                  itemBuilder: (
+                      context, index) => Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),
+                    child: InkWell(
+                      onTap: () => Navigator.pushNamed(context, "itemview",
+                          arguments: index),
+                      child: Container(
+                        height: 170,
+                        width: 160,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            // color: Color(0x10131313),
+                            color: Colors.white),
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 120,
+                              width: 160,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: Image.asset(
+                                    "${providerF!.filterlist[index].photo}",
+                                    fit: BoxFit.cover,
+                                  )),
+                            ),
+                            SizedBox(height: 5),
+                            Text(
+                              "${providerF!.filterlist[index].name}",
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),
+                            ),
+                            Text(
+                              "₹ ${providerF!.filterlist[index].price}",
+                              style: TextStyle(
+                                  fontSize: 15, color: Color(0xff666666)),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
             ),
+
           ],
         ),
       ),
@@ -131,16 +201,71 @@ class _HomeScreenState extends State<HomeScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal:5),
       child: Container(
-                      height: 30,
-                      width: 85,
-                      decoration: BoxDecoration(
+                  height: 30,
+                  width: 85,
+                  decoration: BoxDecoration(
 
-                          borderRadius: BorderRadius.circular(25),
-                      border: Border.all(color: Colors.black12)),
-                      alignment: Alignment.center,
+                      borderRadius: BorderRadius.circular(25),
+                  border: Border.all(color: Colors.black12)),
+                  alignment: Alignment.center,
 
-                      child: Text("$titlename",style: TextStyle(fontSize: 13.5),),
-                    ),
+                  child: Text("$titlename",style: TextStyle(fontSize: 13.5),),
+                ),
     );
   }
 }
+
+//
+// Expanded(
+// child: GridView.builder(
+// gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+// crossAxisCount: 1
+// ),
+// scrollDirection:Axis.horizontal,
+// itemCount: providerT!.filterlist.length,
+// itemBuilder: (
+// context, index) => Padding(
+// padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),
+// child: InkWell(
+// onTap: () => Navigator.pushNamed(context, "itemview",
+// arguments: index),
+// child: Container(
+// height: 170,
+// width: 160,
+// decoration: BoxDecoration(
+// borderRadius: BorderRadius.circular(15),
+// // color: Color(0x10131313),
+// color: Colors.white),
+// child: Column(
+// children: [
+// Container(
+// height: 120,
+// width: 160,
+// decoration: BoxDecoration(
+// borderRadius: BorderRadius.circular(15),
+// ),
+// child: ClipRRect(
+// borderRadius: BorderRadius.circular(15),
+// child: Image.asset(
+// "${providerF!.filterlist[index].photo}",
+// fit: BoxFit.cover,
+// )),
+// ),
+// SizedBox(height: 5),
+// Text(
+// "${providerF!.filterlist[index].name}",
+// style: TextStyle(
+// fontSize: 16,
+// ),
+// ),
+// Text(
+// "₹ ${providerF!.filterlist[index].price}",
+// style: TextStyle(
+// fontSize: 15, color: Color(0xff666666)),
+// ),
+// ],
+// ),
+// ),
+// ),
+// )),
+//),

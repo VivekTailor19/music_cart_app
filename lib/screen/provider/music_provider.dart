@@ -27,6 +27,32 @@ class MusicProvider extends ChangeNotifier
 
     ];
 
+    List<Music> filterlist = [];
+    String option = "";
+
+    void filter(String seltype)
+    {
+        filterlist = [];
+        option = seltype;
+
+        for(int i = 0 ; i<itemlist.length ; i++)
+            {
+                if(itemlist[i].type == seltype)
+                    {
+                        filterlist.add(itemlist[i]);
+                    }
+            }
+
+        if( seltype == "All")
+        {
+
+            filterlist = itemlist;
+        }
+
+        notifyListeners();
+    }
+
+
     List<Music> cartlist = [
         //Music(photo: "assets/images/tumbi.jpg",name: "Tumbi",detail: "SAI Musical Pure Handmade Tumbi",price: 650,qty: 1),
     ];

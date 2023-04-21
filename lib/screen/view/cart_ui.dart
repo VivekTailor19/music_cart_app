@@ -142,7 +142,7 @@ class _Cart_UIState extends State<Cart_UI> {
                       InkWell(
                         onTap: () async {
 
-                             String url = 'https://www.amazon.in/Muteyaar-Polished-Sheesham-Punjabi-Instrument/dp/B07TLBQDCT/ref=sr_1_7?crid=N0CB234F17YE&keywords=tumbi&qid=1682051418&s=musical-instruments&sprefix=tumbi%2Cmi%2C180&sr=1-7';
+                             String url = 'https://paytm.com/';
                              final uri = Uri.parse(url);
 
                               await launchUrl(uri);
