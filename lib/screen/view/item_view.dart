@@ -40,7 +40,11 @@ class _Item_ViewState extends State<Item_View> {
           ),
           actions: [Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Icon(Icons.favorite_rounded,size: 30,color: Color(0xff666666)),
+            child: IconButton(
+                onPressed: () {
+                  providerT!.like(index);
+                },icon: (providerT!.filterlist[index].fav == false) ? Icon(Icons.favorite_border_rounded) :Icon(Icons.favorite_rounded)
+                ,iconSize: 30,color: Color(0xff666666)),
           )],
           elevation: 0,
         ),

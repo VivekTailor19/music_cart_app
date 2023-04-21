@@ -17,12 +17,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    int i = 0;
 
     providerF = Provider.of<MusicProvider>(context, listen: false);
     providerT = Provider.of<MusicProvider>(context, listen: true);
 
     return SafeArea(
       child: Scaffold(
+        
         backgroundColor: Colors.white,
         appBar: AppBar(
           leading: Icon(
@@ -32,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           backgroundColor: Colors.white,
           title: Text(
-            "Music Warehouse",
+            "The Music Bar",
             style: TextStyle(fontSize: 20, color: Color(0xff131313)),
           ),
           centerTitle: true,
@@ -53,6 +55,18 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Column(
           children: [
             SizedBox(height: 5),
+
+            Container(height: 180,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: providerF!.storyphoto.length,
+              itemBuilder: (context, index) {
+                return Story("${providerF!.storyphoto[index]}");
+
+            },
+            ),),
+
+            SizedBox(height: 15),
             Container(height: 30,
               child: Expanded(
                 child: ListView(
@@ -212,6 +226,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Text("$titlename",style: TextStyle(fontSize: 13.5),),
                 ),
     );
+  }
+
+  Widget Story(String stphoto)
+  {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Container(
+        height: 155,width: 320,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
+          border: Border.all(width: 0.65,color: Colors.black12),),
+        child: Image.asset("$stphoto",height: 155,width: 320,fit: BoxFit.fill,),
+      ),
+    );
+
   }
 }
 
