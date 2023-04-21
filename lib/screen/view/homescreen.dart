@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             SizedBox(height: 5),
 
-            Container(height: 180,
+            Container(height: 170,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: providerF!.storyphoto.length,
@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             ),),
 
-            SizedBox(height: 10),
+            SizedBox(height: 5),
             Container(height: 30,
               child: Expanded(
                 child: ListView(
@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
-            SizedBox(height: 15),
+            SizedBox(height: 10),
 
               Container(height: 200,
                 child: ListView.builder(
@@ -244,7 +244,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Container(
-        height: 155,width: 320,
+        height: 150,width: 330,
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
           border: Border.all(width: 0.65,color: Colors.black12),),
         child: Image.asset("$stphoto",height: 155,width: 320,fit: BoxFit.fill,),
