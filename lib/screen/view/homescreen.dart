@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:music_cart_app/screen/provider/music_provider.dart';
 import 'package:provider/provider.dart';
@@ -11,16 +11,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-  MusicProvider? provider ;
+  MusicProvider? provider;
 
   @override
-  void initState()
-  {
+  void initState() {
     super.initState();
-    provider = Provider.of<MusicProvider>(context,listen: false);
+    provider = Provider.of<MusicProvider>(context, listen: false);
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -28,60 +25,122 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          leading: Icon(
+            Icons.sort_rounded,
+            size: 25,
+            color: Color(0xff666666),
+          ),
           backgroundColor: Colors.white,
-
-          title: Text("Music Instrument Shopping", style: TextStyle(fontSize: 20,color: Color(0xff131313)),),
-          elevation:0,
-
+          title: Text(
+            "Music Warehouse",
+            style: TextStyle(fontSize: 20, color: Color(0xff131313)),
+          ),
+          centerTitle: true,
+          elevation: 0,
           actions: [
             IconButton(
-              icon: Icon(Icons.shopping_cart,size: 30,color: Color(0xff666666)),
-              iconSize: 25, color: Colors.indigo,
+              icon: Icon(Icons.shopping_cart),
+              iconSize: 25,
+              color: Color(0xff666666),
               onPressed: () {
                 provider!.finalbill();
                 Navigator.pushNamed(context, "cart");
                 //,arguments: provider!.total);
-
               },
             )
           ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 10,mainAxisSpacing: 10
+        body: Column(
+          children: [
+            SizedBox(height: 5),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 9,vertical: 5),
+              child: Container(height: 35,
+                child: Expanded(
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      Tabs("All"),
+                      Tabs("Percussion"),
+                      Tabs("String"),
+                      Tabs("Wind"),
 
-          ),
-            itemCount: provider!.itemlist.length,
-            itemBuilder: (context, index) => InkWell(
-              onTap: () => Navigator.pushNamed(context, "itemview",arguments: index),
-              child: Container(
-                height: 160,width: 160,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Color(0x10131313)),
-                child: Column(mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(height: 8),
-                    Container(
-                      height: 110,width: 130,
-                      decoration: BoxDecoration(image: DecorationImage(image: AssetImage("${provider!.itemlist[index].photo}"),fit: BoxFit.fill)),
-                    ),
-                    SizedBox(height: 8),
-                    Text("${provider!.itemlist[index].name}",style: TextStyle(fontSize: 16,),),
-
-                    Text("₹ ${provider!.itemlist[index].price}",style: TextStyle(fontSize: 15,color: Color(0xff666666)),),
-
-
-
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            )
-
-          ),
+            ),
+              Expanded(
+              child: GridView.builder(
+                  scrollDirection: Axis.vertical,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 15,
+                    mainAxisSpacing: 10,
+                  ),
+                  itemCount: provider!.itemlist.length,
+                  itemBuilder: (context, index) => InkWell(
+                        onTap: () => Navigator.pushNamed(context, "itemview",
+                            arguments: index),
+                        child: Container(
+                          height: 170,
+                          width: 160,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              // color: Color(0x10131313),
+                              color: Colors.white),
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 120,
+                                width: 160,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: Image.asset(
+                                      "${provider!.itemlist[index].photo}",
+                                      fit: BoxFit.cover,
+                                    )),
+                              ),
+                              SizedBox(height: 5),
+                              Text(
+                                "${provider!.itemlist[index].name}",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Text(
+                                "₹ ${provider!.itemlist[index].price}",
+                                style: TextStyle(
+                                    fontSize: 15, color: Color(0xff666666)),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )),
+            ),
+          ],
         ),
       ),
+    );
+  }
+
+  Widget Tabs(String titlename) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal:5),
+      child: Container(
+                      height: 30,
+                      width: 85,
+                      decoration: BoxDecoration(
+
+                          borderRadius: BorderRadius.circular(25),
+                      border: Border.all(color: Colors.black12)),
+                      alignment: Alignment.center,
+
+                      child: Text("$titlename",style: TextStyle(fontSize: 13.5),),
+                    ),
     );
   }
 }
