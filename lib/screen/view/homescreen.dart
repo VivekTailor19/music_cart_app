@@ -68,35 +68,33 @@ class _HomeScreenState extends State<HomeScreen> {
 
             SizedBox(height: 5),
             Container(height: 30,
-              child: Expanded(
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    InkWell(onTap: () {
-                      providerT!.filter("All");
-                    },
-                    child: Tabs("All")),
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  InkWell(onTap: () {
+                    providerT!.filter("All");
+                  },
+                  child: Tabs("All")),
 
 
-                    InkWell(onTap: () {
-                      providerT!.filter("Percussion");
-                     },
-                      child: Tabs("Percussion")),
+                  InkWell(onTap: () {
+                    providerT!.filter("Percussion");
+                   },
+                    child: Tabs("Percussion")),
 
-                    InkWell(
-                        onTap: () {
-                          providerT!.filter("String");
-                        },
-                        child: Tabs("String")),
+                  InkWell(
+                      onTap: () {
+                        providerT!.filter("String");
+                      },
+                      child: Tabs("String")),
 
-                    InkWell(
-                        onTap: () {
-                          providerT!.filter("Wind");
-                        },
-                        child: Tabs("Wind")),
+                  InkWell(
+                      onTap: () {
+                        providerT!.filter("Wind");
+                      },
+                      child: Tabs("Wind")),
 
-                  ],
-                ),
+                ],
               ),
             ),
 
