@@ -238,6 +238,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+
   Widget Story(String stphoto)
   {
     return Padding(
