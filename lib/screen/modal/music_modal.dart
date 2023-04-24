@@ -6,3 +6,4 @@ class Music
 
   Music({this.photo, this.name, this.detail, this.price, this.qty,this.type,this.fav});
 }
+

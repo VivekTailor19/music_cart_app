@@ -38,12 +38,14 @@ class _Item_ViewState extends State<Item_View> {
               },
             ),
           ),
-          actions: [Padding(
+          actions: [
+            Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: IconButton(
                 onPressed: () {
                   providerT!.like(index);
-                },icon: (providerT!.filterlist[index].fav == false) ? Icon(Icons.favorite_border_rounded) :Icon(Icons.favorite_rounded),
+                },
+                icon: providerT!.filterlist[index].fav != true ? Icon(Icons.favorite_border_rounded) : Icon(Icons.favorite_rounded),
                 iconSize: 30,color: Color(0xff666666)),
           )],
           elevation: 0,
@@ -55,17 +57,11 @@ class _Item_ViewState extends State<Item_View> {
               Stack(
                 children: [
                   Image.asset("${providerF!.filterlist[index].photo}",height: 400,width: 360,fit: BoxFit.fill,),
-                  // Container(height: 200,width: 300,
-                  //   decoration: BoxDecoration(color: Colors.,
-                  //     borderRadius: BorderRadius.circular(20),
-                  //
-                  //     image: DecorationImage(image: AssetImage("${providerF!.filterlist[index].photo}")),
-                  //   ),
-                  // ),
+
                 ],
               ),
 
-              Container(height: 200,
+              Container(height: 250,
                 decoration: BoxDecoration(color: Color(0x10131313),
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(35),topRight: Radius.circular(35))),
                 child: Padding(

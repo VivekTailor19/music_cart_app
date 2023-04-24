@@ -135,15 +135,17 @@ class MusicProvider extends ChangeNotifier
     {
         Music temp = filterlist[index];
 
-        if(filterlist[index].fav == true)
+        if(filterlist[index].fav != true)
             {
-                filterlist[index].fav = false;
-                likedlist.removeAt(index);
+                Music update = Music(name: temp.name,price: temp.price,qty:temp.qty,photo: temp.photo,detail: temp.detail,fav: true);
+                filterlist[index] = update;
+                likedlist.add(temp);
             }
         else
             {
-                filterlist[index].fav = true;
-                likedlist.add(temp);
+                Music update = Music(name: temp.name,price: temp.price,qty:temp.qty,photo: temp.photo,detail: temp.detail,fav: false);
+                filterlist[index] = update;
+                likedlist.removeAt(index);
             }
         notifyListeners();
     }
