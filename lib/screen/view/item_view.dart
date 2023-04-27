@@ -43,7 +43,7 @@ class _Item_ViewState extends State<Item_View> {
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: IconButton(
                 onPressed: () {
-                  providerT!.like(index);
+                  providerF!.like(index);
                 },
                 icon: providerT!.filterlist[index].fav != true ? Icon(Icons.favorite_border_rounded) : Icon(Icons.favorite_rounded),
                 iconSize: 30,color: Color(0xff666666)),

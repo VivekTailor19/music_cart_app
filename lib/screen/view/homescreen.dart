@@ -14,6 +14,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   MusicProvider? providerF;
   MusicProvider? providerT;
+  @override
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           backgroundColor: Colors.white,
           title: Text(
-            "The Music Bar",
+            "The Music Warehouse",
             style: TextStyle(fontSize: 20, color: Color(0xff131313)),
           ),
           centerTitle: true,
@@ -162,6 +167,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text("Favorites",style: TextStyle(fontSize: 15),),
               ),
             ),
+
+
             Container(height: 170,
               child: ListView.builder(
                   scrollDirection:Axis.horizontal,
@@ -170,8 +177,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       context, index) => Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),
                       child: InkWell(
-                        onTap: () => Navigator.pushNamed(context, "itemview",
-                            arguments: index),
+                        onTap: () {
+
+                        },
                       child: Container(
                         height: 170,
                         width: 160,
