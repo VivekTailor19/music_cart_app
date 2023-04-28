@@ -20,15 +20,13 @@ samples, guidance on mobile development, and a full API reference.
 <video src = https://user-images.githubusercontent.com/119835214/235085645-66cf429e-8c82-45f7-86d6-cd263a9ed3fd.mp4" height="1139px" width="351px">
     </video>
 
-<img src = "https://user-images.githubusercontent.com/119835214/235085629-1a6cde73-8196-4367-9cbb-a83c99fa357b.jpg" height="45%" width="30%">
-<img src = "https://user-images.githubusercontent.com/119835214/235085637-12c94c73-fdb9-4bc5-b0cb-54e97f572794.jpg" height="45%" width="30%">
-<img src = "https://user-images.githubusercontent.com/119835214/235085639-8dadc991-51ca-43c1-bee1-713176a04d7c.jpg" height="45%" width="30%">
 
-<img src = "https://user-images.githubusercontent.com/119835214/235085657-8f2ae0ef-fc61-42dd-958a-4267922afc2d.jpg" height="45%" width="30%">
-<img src = "https://user-images.githubusercontent.com/119835214/235085614-9befdf2d-aa63-4130-b6bd-4749ddbabe96.jpg" height="45%" width="30%">
-<img src = "https://user-images.githubusercontent.com/119835214/235085619-67eebf30-3d73-4b94-8a39-7ad3178a5138.jpg" height="45%" width="30%">
-<img src = "https://user-images.githubusercontent.com/119835214/235085624-65dc9eee-bc28-4274-981e-f20c4a06b95f.jpg" height="45%" width="30%">
+<img src = "https://user-images.githubusercontent.com/119835214/235088557-9f5bae8c-b71a-454d-891c-08bbd22bdccd.png" height="45%" width="30%">
+<img src = "https://user-images.githubusercontent.com/119835214/235088563-6e20c632-b640-4edf-9e18-4386aee1e489.png" height="45%" width="30%">
+<img src = "https://user-images.githubusercontent.com/119835214/235088569-25f34835-8f8a-455c-afcb-b6f380c24f58.png" height="45%" width="30%">
+<img src = "https://user-images.githubusercontent.com/119835214/235088573-485d5778-17da-4f2b-9799-98cfd16913b0.png" height="45%" width="30%">
+<img src = "https://user-images.githubusercontent.com/119835214/235088580-571ac78f-bc5c-4ea3-b9c9-5e16784b4f39.png" height="45%" width="30%">
+<img src = "https://user-images.githubusercontent.com/119835214/235088584-355f04af-033d-41bf-9b71-b35fed962ed1.png" height="45%" width="30%">
+<img src = "https://user-images.githubusercontent.com/119835214/235088590-a4713d17-b1bd-4d41-9df1-02615a378be2.png" height="45%" width="30%">
 
-
-//<img src = "" height="45%" width="30%">
 </p>
