@@ -317,9 +317,11 @@ class MusicProvider extends ChangeNotifier {
             detail: temp.detail,
             fav: true);
         filterlist[index] = update;
-        likeitems();
+        //likeitems();
+
+        likedlist.add(filterlist[index]);
+
         notifyListeners();
-        //likedlist.add(temp);
       } else {
         Music update = Music(
             name: temp.name,
@@ -329,30 +331,31 @@ class MusicProvider extends ChangeNotifier {
             detail: temp.detail,
             fav: false);
         filterlist[index] = update;
-        likeitems();
+        //likeitems();
+
+        likedlist.removeAt(index);
         notifyListeners();
-        //likedlist.removeAt(index);
       }
       //notifyListeners();
 
   }
 
-  void likeitems()
-  {
-
-    for(int index = 0 ; index<filterlist.length ; index++ )
-      {
-        Music temp = filterlist[index];
-
-        if( filterlist[index].fav == true)
-        {
-          temp = filterlist[index];
-          likedlist.add(temp);
-        }
-      }
-    notifyListeners();
-
-  }
+  // void likeitems()
+  // {
+  //
+  //   for(int index = 0 ; index<filterlist.length ; index++ )
+  //     {
+  //       Music temp = filterlist[index];
+  //
+  //       if( filterlist[index].fav == true)
+  //       {
+  //         temp = filterlist[index];
+  //         likedlist.add(temp);
+  //       }
+  //     }
+  //   notifyListeners();
+  //
+  // }
 
   // void like(int index) {
   //   Music temp = filterlist[index];

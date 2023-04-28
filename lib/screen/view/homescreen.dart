@@ -179,6 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: InkWell(
                         onTap: () {
 
+
                         },
                       child: Container(
                         height: 170,
@@ -196,19 +197,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child: Image.asset(
-                                "${providerF!.likedlist[index].photo}",
+                                "${providerT!.likedlist[index].photo}",
                                 fit: BoxFit.cover,
                               ),
                             ),
                             SizedBox(height: 3),
                             Text(
-                              "${providerF!.likedlist[index].name}",
+                              "${providerT!.likedlist[index].name}",
                               style: TextStyle(
                                 fontSize: 16,
                               ),
                             ),
                             Text(
-                              "₹ ${providerF!.likedlist[index].price}",
+                              "₹ ${providerT!.likedlist[index].price}",
                               style: TextStyle(
                                   fontSize: 15, color: Color(0xff666666)),
                             ),
